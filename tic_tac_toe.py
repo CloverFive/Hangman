@@ -22,7 +22,7 @@ def take_turn_user(user_preference):
             return
 
 def check_posible_win(computer_simbol, checked_simbol):
-    posible_winning_cominations = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [7, 4, 1], [8, 5, 2], [9, 6, 1], [7, 5, 3],  [9, 5, 1]]
+    posible_winning_cominations = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [7, 4, 1], [8, 5, 2], [9, 6, 3], [7, 5, 3],  [9, 5, 1]]
 
     for i in posible_winning_cominations:
         
@@ -71,16 +71,17 @@ def take_turn_computer(computer_simbol, player_simbol):
             if grid[i + 1] == ' ':
                 posible_moves.append(i + 1)
         grid[choice(posible_moves)] = computer_simbol
-        print(posible_moves)
+        # print(posible_moves)
         return    
 
         
 def check_win(simbol):
     
-    winning_combinations = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [7, 4, 1], [8, 5, 2], [9, 6, 1], [7, 5, 3],  [9, 5, 1]]
+    winning_combinations = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [7, 4, 1], [8, 5, 2], [9, 6, 3], [7, 5, 3],  [9, 5, 1]]
     
     for i in winning_combinations:
         if grid[i[0]] == simbol and grid[i[1]] == simbol and grid[i[2]] == simbol:
+            print(i)
             return True
 
 def check_grid_full():
