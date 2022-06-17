@@ -42,19 +42,20 @@ secret_number = []
 def make_secret_number():
 
     global secret_number
-    secret_number.append(randint(1, 9))
+    # secret_number.append(randint(1, 9))
     
-    while True:
-        random_number = randint(0, 9)
-        if secret_number[0] != random_number:
-            secret_number.append(random_number)
-            break
+    # while True:
+    #     random_number = randint(0, 9)
+    #     if secret_number[0] != random_number:
+    #         secret_number.append(random_number)
+    #         break
             
-    while True:
-        random_number = randint(0, 9)
-        if secret_number[0] != random_number and secret_number[1] != random_number:
-            secret_number.append(random_number)
-            break
+    # while True:
+    #     random_number = randint(0, 9)
+    #     if secret_number[0] != random_number and secret_number[1] != random_number:
+    #         secret_number.append(random_number)
+    #         break
+    secret_number = [1, 2, 3]
     return    
 
 user_guess = 0
@@ -82,7 +83,7 @@ def check_fermi():
 def check_piko():
     for i in secret_number:
         for j in user_guess:
-            if j == i:
+            if int(j) == i:
             
                 return True
 
@@ -106,23 +107,21 @@ When I say: That means:
     counter = 0
     print('I have thought up a number. You have 10 guesses to get it.')
     while True:
-
-
-
-        print(secret_number)
-        print(secret_number[0] * 100 + secret_number[1] * 10 + secret_number[2])
-        print(user_guess)
-
         
         counter += 1
         ask_guess(counter)
         if check_win():
             if input('Do you want to play again? (yes or no)\n') != 'yes':
                 return
+            else:
+                make_secret_number()    
         elif counter > 10:
             print('you took to long to guess the number')
             if input('Do you want to play again? (yes or no)\n') != 'yes':
                 return
+            else:
+                make_secret_number()
+            
         else:     
             if check_fermi():
                 print('firmi')
