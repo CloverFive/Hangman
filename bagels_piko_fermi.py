@@ -88,7 +88,7 @@ def check_piko():
 
 def check_win():
     global secret_number
-    if secret_number[2] * 100 + secret_number[1] * 10 + secret_number[0] == user_guess:
+    if secret_number[0] * 100 + secret_number[1] * 10 + secret_number[2] == int(user_guess):
         print('You got it!')
         return True
         
@@ -106,22 +106,29 @@ When I say: That means:
     counter = 0
     print('I have thought up a number. You have 10 guesses to get it.')
     while True:
-    
+
+
+
+        print(secret_number)
+        print(secret_number[0] * 100 + secret_number[1] * 10 + secret_number[2])
+        print(user_guess)
+
+        
         counter += 1
         ask_guess(counter)
         if check_win():
-            if input('Do you want to play again? (yes or no)') != 'yes':
+            if input('Do you want to play again? (yes or no)\n') != 'yes':
                 return
         elif counter > 10:
             print('you took to long to guess the number')
-            if input('Do you want to play again? (yes or no)') != 'yes':
+            if input('Do you want to play again? (yes or no)\n') != 'yes':
                 return
         else:     
             if check_fermi():
                 print('firmi')
             if check_piko():
                 print('piko')
-            else:    
+            elif check_fermi() == False:    
                 print('bagel')
         
 # ask the user if they want to play again
