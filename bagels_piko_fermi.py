@@ -60,18 +60,20 @@ def make_secret_number():
 user_guess = 0
 # ask the user for an guess 
 def ask_guess(number_of_tries):
-        global user_guess = int(input(f'guess #{number_of_tries}')
+    global user_guess
+    user_guess = input(f'guess #{number_of_tries}\n')
 
 # check for fermi
 def check_fermi():
-    if secret_number[0] == user_guess[0]:
-        print('fermi')
+    
+    if secret_number[0] == int(user_guess[0]):
+
         return True
-    elif secret_number[1] == user_guess[1]:
-        print('fermi')
+    elif secret_number[1] == int(user_guess[1]):
+    
         return True
-    elif sectet_number[2] == user_guess[2]:
-        print('fermi')
+    elif secret_number[2] == int(user_guess[2]):
+        
         return True
     else:
         return False
@@ -80,20 +82,15 @@ def check_fermi():
 def check_piko():
     for i in secret_number:
         for j in user_guess:
-            if j = i:
-                print('piko')
+            if j == i:
+            
                 return True
 
-# check for bagel
-def check_bagel():
-    if check_piko == False and check_firmi == False:
-        print('bagel')
-        return True
-    else:
-        return False
-
 def check_win():
-    if random_number[0] *  == 
+    global secret_number
+    if secret_number[2] * 100 + secret_number[1] * 10 + secret_number[0] == user_guess:
+        print('You got it!')
+        return True
         
 # give the hints to the user
 # repet this proses unil the user guesses coretly and the game end or if the user guessed to many times
@@ -105,15 +102,26 @@ When I say: That means:
  Pico One digit is correct but in the wrong position.
  Fermi One digit is correct and in the right position.''')
     
-    secret_number()
+    make_secret_number()
+    counter = 0
     print('I have thought up a number. You have 10 guesses to get it.')
     while True:
-        
-        ask_guess(i)
-        check_fermi()
-        check_piko()
-        check_bagel()
     
-    print('you took to long to guess the number')
+        counter += 1
+        ask_guess(counter)
+        if check_win():
+            if input('Do you want to play again? (yes or no)') != 'yes':
+                return
+        elif counter > 10:
+            print('you took to long to guess the number')
+            if input('Do you want to play again? (yes or no)') != 'yes':
+                return
+        else:     
+            if check_fermi():
+                print('firmi')
+            if check_piko():
+                print('piko')
+            else:    
+                print('bagel')
         
 # ask the user if they want to play again
