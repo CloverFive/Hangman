@@ -42,20 +42,20 @@ secret_number = []
 def make_secret_number():
 
     global secret_number
-    # secret_number.append(randint(1, 9))
+    secret_number.append(randint(1, 9))
     
-    # while True:
-    #     random_number = randint(0, 9)
-    #     if secret_number[0] != random_number:
-    #         secret_number.append(random_number)
-    #         break
+    while True:
+        random_number = randint(0, 9)
+        if secret_number[0] != random_number:
+            secret_number.append(random_number)
+            break
             
-    # while True:
-    #     random_number = randint(0, 9)
-    #     if secret_number[0] != random_number and secret_number[1] != random_number:
-    #         secret_number.append(random_number)
-    #         break
-    secret_number = [1, 2, 3]
+    while True:
+        random_number = randint(0, 9)
+        if secret_number[0] != random_number and secret_number[1] != random_number:
+            secret_number.append(random_number)
+            break
+
     return    
 
 user_guess = 0
@@ -81,9 +81,10 @@ def check_fermi():
     
 # check for piko 
 def check_piko():
-    for i in secret_number:
-        for j in user_guess:
-            if int(j) == i:
+
+    possible_winning_cominations = [[0, 1], [0, 2], [1, 0], [1, 2], [2, 0], [2, 1]]
+    for i in possible_winning_cominations:
+            if int(user_guess[i[0]]) == secret_number[i[1]]:
             
                 return True
 
