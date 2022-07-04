@@ -1,6 +1,7 @@
 # The Bagels Deduction Game
 from random import randint
 
+
 # Sample Output:
 
 # I am thinking of a 3-digit number. Try to guess what it is.
@@ -152,6 +153,7 @@ When I say: That means:
         #TODO: Use global constants to manage number of guesses
         elif counter > 10:
             print('you took to long to guess the number')
+            #if not input().lower().startswith('y'):
             if input('Do you want to play again? (yes or no)\n') != 'yes':
                 return
             else:

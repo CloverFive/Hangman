@@ -1,2 +1,2 @@
-import bagels_piko_fermi as ttt
+import sonar as ttt
 ttt.start_new_game()
